@@ -11,7 +11,7 @@ RUN curl -Ls https://artifacts.elastic.co/downloads/kibana/kibana-6.1.2-linux-x8
     ln -s /usr/share/kibana /opt/kibana
 
 ENV PATH=/usr/share/kibana/bin:$PATH
-ENV ELASTIC_CONTAINER true \
+ENV ELASTIC_CONTAINER=true \
     CONSOLE_ENABLED=false \
     XPACK_APM_ENABLED=false \
     XPACK_ML_ENABLED=false \
