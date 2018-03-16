@@ -10,8 +10,8 @@ WORKDIR /usr/share/kibana
 RUN curl -Ls https://artifacts.elastic.co/downloads/kibana/kibana-6.1.2-linux-x86_64.tar.gz | tar --strip-components=1 -zxf - && \
     ln -s /usr/share/kibana /opt/kibana
 
+ENV PATH=/usr/share/kibana/bin:$PATH
 ENV ELASTIC_CONTAINER true \
-    PATH=/usr/share/kibana/bin:$PATH \
     CONSOLE_ENABLED=false \
     XPACK_APM_ENABLED=false \
     XPACK_ML_ENABLED=false \
