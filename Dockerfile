@@ -1,6 +1,6 @@
-# This Dockerfile was generated from the template at templates/Dockerfile.j2
+
 FROM centos:7
-LABEL maintainer "Elastic Docker Team <docker@elastic.co>"
+LABEL maintainer "Cailen <cailen@me.com>"
 EXPOSE 5601
 
 # Add Reporting dependencies.
@@ -10,18 +10,21 @@ WORKDIR /usr/share/kibana
 RUN curl -Ls https://artifacts.elastic.co/downloads/kibana/kibana-6.1.2-linux-x86_64.tar.gz | tar --strip-components=1 -zxf - && \
     ln -s /usr/share/kibana /opt/kibana
 
-ENV ELASTIC_CONTAINER true
-ENV PATH=/usr/share/kibana/bin:$PATH
+ENV ELASTIC_CONTAINER true \
+    PATH=/usr/share/kibana/bin:$PATH \
+    CONSOLE_ENABLED=false \
+    XPACK_APM_ENABLED=false \
+    XPACK_ML_ENABLED=false \
+    XPACK_GRAPH_ENABLED=false \
+    XPACK_GROKDEBUGGER_ENABLED=false \
+    XPACK_SECURITY_ENABLED=false
 
 # Set some Kibana configuration defaults.
-COPY config/kibana-x-pack.yml /usr/share/kibana/config/kibana.yml
+COPY config/kibana.yml /usr/share/kibana/config/kibana.yml
 
 # Add the launcher/wrapper script. It knows how to interpret environment
 # variables and translate them to Kibana CLI options.
 COPY bin/kibana-docker /usr/local/bin/
-
-# Add a self-signed SSL certificate for use in examples.
-COPY ssl/kibana.example.org.* /usr/share/kibana/config/
 
 # Provide a non-root user to run the process.
 RUN groupadd --gid 1000 kibana && \
