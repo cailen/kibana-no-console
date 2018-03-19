@@ -34,5 +34,6 @@ RUN groupadd --gid 1000 kibana && \
 USER kibana
 
 RUN kibana-plugin install x-pack
+RUN kibana-plugin install https://github.com/sirensolutions/sentinl/releases/download/tag-6.2.2/sentinl-v6.1.2.zip
 
 CMD ["/bin/bash", "/usr/local/bin/kibana-docker"]
