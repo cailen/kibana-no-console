@@ -33,6 +33,4 @@ RUN groupadd --gid 1000 kibana && \
       kibana
 USER kibana
 
-RUN kibana-plugin install x-pack
-
 CMD ["/bin/bash", "/usr/local/bin/kibana-docker"]
