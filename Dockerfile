@@ -7,7 +7,7 @@ EXPOSE 5601
 RUN yum update -y && yum install -y fontconfig freetype && yum clean all
 
 WORKDIR /usr/share/kibana
-RUN curl -Ls https://artifacts.elastic.co/downloads/kibana/kibana-6.1.2-linux-x86_64.tar.gz | tar --strip-components=1 -zxf - && \
+RUN curl -Ls https://artifacts.elastic.co/downloads/kibana/kibana-6.2.3-linux-x86_64.tar.gz | tar --strip-components=1 -zxf - && \
     ln -s /usr/share/kibana /opt/kibana
 
 ENV PATH=/usr/share/kibana/bin:$PATH
