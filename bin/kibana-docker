@@ -59,6 +59,8 @@ kibana_vars=(
     pid.file
     regionmap
     regionmap.includeElasticMapsService
+    sentinl.settings.email.active
+    sentinl.settings.email.host
     server.basePath
     server.customResponseHeaders
     server.defaultRoute
